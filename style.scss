@@ -31,7 +31,6 @@ $borderColor: #E7E8E9;
   background-size: 15px;
   min-width: 29px;
   min-height: 29px;
-  margin: ($navbarHeight - 29)/2 2.5px;
   display: inline-flex;
   flex-direction: column;
   border: 2px solid $borderColor;
@@ -65,6 +64,7 @@ $borderColor: #E7E8E9;
   float: left;
   display: inline-flex;
   flex-direction: row;
+  border-right: solid 1px $borderColor;
 }
 
 .logo {
@@ -120,10 +120,13 @@ $borderColor: #E7E8E9;
 .tile {
   background-color: #EFEFF7;
   max-width: 400px;
-  padding: 20px;
+  padding: 7px;
   display: inline-flex;
   flex-direction: row;
   margin: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 
 .avatar {
@@ -235,7 +238,6 @@ $borderColor: #E7E8E9;
     flex-direction: column;
     font-size: $powerSize;
     padding: ($navbarHeight - $powerSize * 1.2)/2 10px ($navbarHeight - $powerSize * 1.2)/2 0;
-    border-right: solid 1px $borderColor;
     font-weight: 700;
   }
   .file-name {
@@ -330,7 +332,6 @@ $borderColor: #E7E8E9;
     flex-direction: row;
     font-size: $powerSize;
     padding: ($navbarHeight - $powerSize * 1.2)/2 10px ($navbarHeight - $powerSize * 1.2)/2 0;
-    border-right: solid 1px $borderColor;
     font-weight: 700;
   }
   .power >*{
