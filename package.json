@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/TomPridham/qzzr/issues"
   },
-  "homepage": "https://github.com/TomPridham/qzzr#readme"
+  "homepage": "https://github.com/TomPridham/qzzr#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglifycss": "^1.0.6"
+  }
 }

@@ -1,18 +1,23 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,100);
-@import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,600,800);
 
+/***** resetting links and setting basic body css *****/
 body {
   background-color: #FFF;
   font-family: 'Lato', 'Helvetica', 'Arial', sans-serif;
   color: #515967;
-
 }
-$borderColor: #E7E8E9;
+
 a:link, a:visited, a:hover, a:active {
   color: inherit;
   text-decoration: none;
 }
 
+/***** variables *****/
+$navbarHeight: 38px;
+$borderColor: #E7E8E9;
+
+/***** mixins *****/
+//creates a linear gradient in the specified direction between any number of colors
 @mixin gradient($direction, $colors...) {
   background: #FBFDFD;
   background: -webkit-linear-gradient($direction, $colors);
@@ -21,7 +26,23 @@ a:link, a:visited, a:hover, a:active {
   background: linear-gradient($direction, $colors)
 }
 
-$navbarHeight: 54px;
+//creates repeated button css
+@mixin smallButton() {
+  background-size: 15px;
+  min-width: 29px;
+  min-height: 29px;
+  margin: ($navbarHeight - 29)/2 2.5px;
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid $borderColor;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  float: left;
+}
+
+/***** default mobile styling *****/
+
 .navbar {
   height: $navbarHeight;
   width: 100%;
@@ -30,6 +51,13 @@ $navbarHeight: 54px;
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.container {
+  padding-top: $navbarHeight;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .branding {
@@ -49,65 +77,39 @@ $navbarHeight: 54px;
 }
 
 .power {
-  $powerSize: 11px;
-  display: inline-flex;
-  flex-direction: column;
-  font-size: $powerSize;
-  padding: ($navbarHeight - $powerSize * 1.2)/2 10px ($navbarHeight - $powerSize * 1.2)/2 0;
-  border-right: solid 1px $borderColor;
-  font-weight: bold;
+  display: none;
 }
 
 .file-name {
-  $fileSize: 15px;
+  $fileSize: 16px;
   float: left;
   font-size: $fileSize;
   padding: ($navbarHeight - $fileSize * 1.2)/2 0 ($navbarHeight - $fileSize * 1.2)/2 10px;
+  font-weight: 200;
+  opacity: .85;
 }
 
-.buttons{
+.buttons {
   height: $navbarHeight;
   float: right;
   display: inline-flex;
   flex-direction: row;
 }
 
-@mixin smallButton(){
-  background-size: 15px;
-  min-width: 29px;
-  min-height: 29px;
-  margin: ($navbarHeight - 29)/2 2.5px;
-  display: inline-flex;
-  flex-direction: column;
-  border: 2px solid $borderColor;
-  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
-  border-radius:3px;
-  float: left;
-}
 .share {
-  background: url("./resources/ico_share_social@2x.png") #fff no-repeat center;
-  @include smallButton();
+  display: none;
 }
 
 .edit {
-  background: url('./resources/ico_annotate@2x.png') #fff no-repeat center;
-  @include smallButton();
-  background-size: 20px;
+  display: none;
 }
 
 .join {
-  background-color: #F7C400;
-  color: #fff;
-  @include smallButton();
-  border:none;
-  padding: 6px 10px;
-  font-weight:bold;
-  min-width:40px;
+  display: none;
 }
 
 .menu {
-  background: url("./resources/ico_menu@2x.png")  no-repeat center;
+  background: url("./resources/ico_menu@2x.png") no-repeat center;
   background-size: 20px;
   padding: ($navbarHeight - 29)/2 20px;
   display: inline-flex;
@@ -117,6 +119,265 @@ $navbarHeight: 54px;
 
 .tile {
   background-color: #EFEFF7;
+  max-width: 400px;
+  padding: 20px;
+  display: inline-flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.avatar {
+  display: inline-flex;
+  flex-direction: column;
+  float: left;
+  padding-right: 10px;
+}
+
+.card {
+  display: inline-flex;
+  flex-direction: column;
+  float: right;
+  background: #fff;
+}
+
+.quiz {
+  padding: 15px;
+}
+
+.user {
+  float: left;
+  margin-top: -10px;
+  font-weight: 800;
+}
+
+.time {
+  float: right;
+  opacity: .85;
+  margin-top: -10px;
+
+}
+
+.green-text {
+  color: #8BDECE;
+}
+
+.desc {
   clear: both;
-  display: block;
+  border-bottom: solid 1px #eee;
+  padding-bottom: 10px;
+  margin-top: -10px;
+  font-size: 13px;
+  font-weight: 700;
+
+}
+
+.quiz-title {
+  opacity: .9;
+  margin-top: -5px;
+  font-weight: 600;
+
+}
+
+.publisher {
+  opacity: .55;
+  margin: -5px 0;
+  font-weight: 600;
+  font-size: 13px;
+  padding-bottom: 5px;
+
+}
+
+@media (min-width: 760px) {
+
+  $navbarHeight: 54px;
+  .menu {
+    background: url("./resources/ico_menu@2x.png") no-repeat center;
+    background-size: 20px;
+    padding: ($navbarHeight - 29)/2 20px;
+    display: inline-flex;
+    flex-direction: column;
+    float: left;
+  }
+  .navbar {
+    height: $navbarHeight;
+    width: 100%;
+    @include gradient(to bottom, #eee, #FBFDFD);
+    border-bottom: solid 1px #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .container {
+    padding-top: $navbarHeight;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .branding {
+    height: $navbarHeight;
+    float: left;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  .logo {
+    background: url('./resources/logo@2x.png') no-repeat center;
+    background-size: 25px auto;
+    padding: ($navbarHeight - 25)/2 20px;
+    display: inline-flex;
+    flex-direction: column;
+    opacity: .85;
+  }
+  .power {
+    $powerSize: 11px;
+    display: inline-flex;
+    flex-direction: column;
+    font-size: $powerSize;
+    padding: ($navbarHeight - $powerSize * 1.2)/2 10px ($navbarHeight - $powerSize * 1.2)/2 0;
+    border-right: solid 1px $borderColor;
+    font-weight: 700;
+  }
+  .file-name {
+    $fileSize: 16px;
+    float: left;
+    font-size: $fileSize;
+    padding: ($navbarHeight - $fileSize * 1.2)/2 0 ($navbarHeight - $fileSize * 1.2)/2 10px;
+    font-weight: 200;
+    opacity: .85;
+  }
+
+  .buttons {
+    height: $navbarHeight;
+    float: right;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  .share {
+    background: url("./resources/ico_share_social@2x.png") #fff no-repeat center;
+    @include smallButton();
+    margin: ($navbarHeight - 29)/2 2.5px;
+
+  }
+
+  .edit {
+    background: url('./resources/ico_annotate@2x.png') #fff no-repeat center;
+    @include smallButton();
+    background-size: 20px;
+    margin: ($navbarHeight - 29)/2 2.5px;
+
+  }
+
+  .join {
+    background-color: #F7C400;
+    color: #fff;
+    @include smallButton();
+    border: none;
+    padding: 6px 10px;
+    font-weight: 600;
+    min-width: 40px;
+    font-size: 12px;
+    margin: ($navbarHeight - 29)/2 2.5px;
+
+  }
+}
+
+@media (min-width: 1000px) {
+  $navbarHeight: 54px;
+  .menu {
+    background: url("./resources/ico_menu@2x.png") no-repeat center;
+    background-size: 20px;
+    padding: ($navbarHeight - 29)/2 20px;
+    display: inline-flex;
+    flex-direction: column;
+    float: left;
+  }
+  .navbar {
+    height: $navbarHeight;
+    width: 100%;
+    @include gradient(to bottom, #eee, #FBFDFD);
+    border-bottom: solid 1px #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .container {
+    padding-top: $navbarHeight;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .branding {
+    height: $navbarHeight;
+    float: left;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  .logo {
+    background: url('./resources/logo@2x.png') no-repeat center;
+    background-size: 25px auto;
+    padding: ($navbarHeight - 25)/2 20px;
+    display: inline-flex;
+    flex-direction: column;
+    opacity: .85;
+  }
+  .power {
+    $powerSize: 11px;
+    display: inline-flex;
+    flex-direction: row;
+    font-size: $powerSize;
+    padding: ($navbarHeight - $powerSize * 1.2)/2 10px ($navbarHeight - $powerSize * 1.2)/2 0;
+    border-right: solid 1px $borderColor;
+    font-weight: 700;
+  }
+  .power >*{
+    margin-right: 3px;
+  }
+  .file-name {
+    $fileSize: 16px;
+    float: left;
+    font-size: $fileSize;
+    padding: ($navbarHeight - $fileSize * 1.2)/2 0 ($navbarHeight - $fileSize * 1.2)/2 10px;
+    font-weight: 200;
+    opacity: .85;
+  }
+
+  .buttons {
+    height: $navbarHeight;
+    float: right;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  .share {
+    background: url("./resources/ico_share_social@2x.png") #fff no-repeat center;
+    @include smallButton();
+    margin: ($navbarHeight - 29)/2 2.5px;
+
+  }
+
+  .edit {
+    background: url('./resources/ico_annotate@2x.png') #fff no-repeat center;
+    @include smallButton();
+    background-size: 20px;
+    margin: ($navbarHeight - 29)/2 2.5px;
+
+  }
+
+  .join {
+    background-color: #F7C400;
+    color: #fff;
+    @include smallButton();
+    border: none;
+    padding: 6px 10px;
+    font-weight: 600;
+    min-width: 40px;
+    font-size: 12px;
+    margin: ($navbarHeight - 29)/2 2.5px;
+
+  }
+
 }

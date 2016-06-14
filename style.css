@@ -22,6 +22,13 @@ a:link, a:visited, a:hover, a:active {
   top: 0;
   left: 0; }
 
+.container {
+  padding-top: 54px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 .branding {
   height: 54px;
   float: left;
@@ -113,5 +120,49 @@ a:link, a:visited, a:hover, a:active {
 
 .tile {
   background-color: #EFEFF7;
+  width: 400px;
+  padding: 20px;
+  display: inline-flex;
+  flex-direction: row;
+  margin: auto; }
+
+.avatar {
+  display: inline-flex;
+  flex-direction: column;
+  float: left;
+  padding-right: 10px; }
+
+.card {
+  display: inline-flex;
+  flex-direction: column;
+  float: right;
+  background: #fff; }
+
+.quiz {
+  padding: 15px; }
+
+.user {
+  float: left;
+  margin-top: -10px; }
+
+.time {
+  float: right;
+  opacity: .85;
+  margin-top: -10px; }
+
+.green-text {
+  color: #8BDECE; }
+
+.desc {
   clear: both;
-  display: block; }
+  border-bottom: solid 1px #eee;
+  padding-bottom: 10px;
+  margin-top: -10px; }
+
+.quiz-title {
+  opacity: .9;
+  margin-top: -10px; }
+
+.publisher {
+  opacity: .85;
+  margin: -5px 0; }
